@@ -1,3 +1,6 @@
+# Context/notes files (root-level markdown — not part of the codebase)
+/*.md
+
 # Rust build artifacts
 /target/
 crates/*/target/
