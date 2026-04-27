@@ -1,5 +1,6 @@
 # Context/notes files (root-level markdown — not part of the codebase)
 /*.md
+!README.md
 
 # Rust build artifacts
 /target/
