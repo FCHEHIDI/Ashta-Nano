@@ -1,0 +1,11 @@
+[package]
+name = "ashta-ingest"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ashta-core  = { path = "../ashta-core" }
+ashta-log   = { path = "../ashta-log" }
+
+[dev-dependencies]
+ashta-query = { path = "../ashta-query" }
