@@ -1,0 +1,12 @@
+[package]
+name = "ashta-replay"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ashta-core  = { path = "../ashta-core" }
+ashta-log   = { path = "../ashta-log" }
+ashta-index = { path = "../ashta-index" }
+
+[dev-dependencies]
+ashta-ingest = { path = "../ashta-ingest" }

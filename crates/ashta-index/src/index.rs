@@ -70,6 +70,23 @@ impl SegmentIndex {
         candidates
     }
 
+    /// Retourne tous les ids de segments dont la zone map intersecte `[t_start, t_end]`,
+    /// quel que soit le symbol.
+    ///
+    /// Utilisé par `ashta-replay` quand aucun filtre symbol n'est posé.
+    pub fn query_all(&self, t_start: u64, t_end: u64) -> Vec<u32> {
+        let mut candidates: Vec<u32> = self
+            .entries
+            .iter()
+            .filter(|(_, entry)| entry.overlaps(t_start, t_end))
+            .map(|((_, seg_id), _)| *seg_id)
+            .collect();
+
+        candidates.sort_unstable();
+        candidates.dedup();
+        candidates
+    }
+
     /// Nombre total d'entrées dans l'index.
     pub fn len(&self) -> usize {
         self.entries.len()

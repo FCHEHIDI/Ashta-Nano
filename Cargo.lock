@@ -38,3 +38,13 @@ dependencies = [
  "ashta-index",
  "ashta-log",
 ]
+
+[[package]]
+name = "ashta-replay"
+version = "0.1.0"
+dependencies = [
+ "ashta-core",
+ "ashta-index",
+ "ashta-ingest",
+ "ashta-log",
+]
