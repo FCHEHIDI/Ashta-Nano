@@ -1,0 +1,10 @@
+[package]
+name = "ashta-observe"
+version = "0.1.0"
+edition = "2024"
+
+# Zéro dépendance externe — tout en stdlib.
+# Pas de prometheus, pas de metrics crate.
+# Chaque compteur est un AtomicU64 — zéro allocation sur le hot path.
+
+[dependencies]
