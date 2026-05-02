@@ -1,0 +1,231 @@
+ Downloading crates ...
+  Downloaded serde_derive v1.0.228
+  Downloaded either v1.15.0
+  Downloaded same-file v1.0.6
+  Downloaded ciborium-io v0.2.2
+  Downloaded cfg-if v1.0.4
+  Downloaded plotters-svg v0.3.7
+  Downloaded is-terminal v0.4.17
+  Downloaded ciborium-ll v0.2.2
+  Downloaded itoa v1.0.18
+  Downloaded plotters-backend v0.3.7
+  Downloaded clap_lex v1.1.0
+  Downloaded crossbeam-deque v0.8.6
+  Downloaded quote v1.0.45
+  Downloaded walkdir v2.5.0
+  Downloaded criterion-plot v0.5.0
+  Downloaded anes v0.1.6
+  Downloaded anstyle v1.0.14
+  Downloaded cast v0.3.0
+  Downloaded autocfg v1.5.0
+  Downloaded tinytemplate v1.2.1
+  Downloaded crossbeam-epoch v0.9.18
+  Downloaded zmij v1.0.21
+  Downloaded crossbeam-utils v0.8.21
+  Downloaded oorandom v11.1.5
+  Downloaded ciborium v0.2.2
+  Downloaded once_cell v1.21.4
+  Downloaded clap v4.6.1
+  Downloaded num-traits v0.2.19
+  Downloaded unicode-ident v1.0.24
+  Downloaded half v2.7.1
+  Downloaded serde_core v1.0.228
+  Downloaded serde v1.0.228
+  Downloaded rayon-core v1.13.0
+  Downloaded proc-macro2 v1.0.106
+  Downloaded zerocopy-derive v0.8.48
+  Downloaded memchr v2.8.0
+  Downloaded itertools v0.10.5
+  Downloaded criterion v0.5.1
+  Downloaded plotters v0.3.7
+  Downloaded regex v1.12.3
+  Downloaded clap_builder v4.6.0
+  Downloaded serde_json v1.0.149
+  Downloaded rayon v1.12.0
+  Downloaded aho-corasick v1.1.4
+  Downloaded zerocopy v0.8.48
+  Downloaded syn v2.0.117
+  Downloaded regex-syntax v0.8.10
+  Downloaded regex-automata v0.4.14
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling libc v0.2.186
+   Compiling serde_core v1.0.228
+   Compiling crossbeam-utils v0.8.21
+   Compiling syn v2.0.117
+   Compiling zerocopy v0.8.48
+   Compiling zerocopy-derive v0.8.48
+   Compiling autocfg v1.5.0
+   Compiling zmij v1.0.21
+   Compiling serde v1.0.228
+   Compiling num-traits v0.2.19
+   Compiling crossbeam-epoch v0.9.18
+   Compiling serde_derive v1.0.228
+   Compiling serde_json v1.0.149
+   Compiling either v1.15.0
+   Compiling cfg-if v1.0.4
+   Compiling rayon-core v1.13.0
+   Compiling half v2.7.1
+   Compiling crossbeam-deque v0.8.6
+   Compiling memmap2 v0.9.10
+   Compiling regex-syntax v0.8.10
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.0
+   Compiling ashta-core v0.1.0 (/home/ashta-dev/Ashta-Nano/crates/ashta-core)
+   Compiling plotters-backend v0.3.7
+   Compiling clap_lex v1.1.0
+   Compiling ciborium-io v0.2.2
+   Compiling anstyle v1.0.14
+   Compiling clap_builder v4.6.0
+   Compiling ciborium-ll v0.2.2
+   Compiling plotters-svg v0.3.7
+   Compiling ashta-index v0.1.0 (/home/ashta-dev/Ashta-Nano/crates/ashta-index)
+   Compiling regex-automata v0.4.14
+   Compiling ashta-mem v0.1.0 (/home/ashta-dev/Ashta-Nano/crates/ashta-mem)
+   Compiling itertools v0.10.5
+   Compiling cast v0.3.0
+   Compiling same-file v1.0.6
+   Compiling criterion-plot v0.5.0
+   Compiling walkdir v2.5.0
+   Compiling rayon v1.12.0
+   Compiling plotters v0.3.7
+   Compiling ashta-log v0.1.0 (/home/ashta-dev/Ashta-Nano/crates/ashta-log)
+   Compiling tinytemplate v1.2.1
+   Compiling regex v1.12.3
+   Compiling ciborium v0.2.2
+   Compiling clap v4.6.1
+   Compiling is-terminal v0.4.17
+   Compiling oorandom v11.1.5
+   Compiling once_cell v1.21.4
+   Compiling anes v0.1.6
+   Compiling ashta-query v0.1.0 (/home/ashta-dev/Ashta-Nano/crates/ashta-query)
+   Compiling criterion v0.5.1
+   Compiling ashta-observe v0.1.0 (/home/ashta-dev/Ashta-Nano/crates/ashta-observe)
+   Compiling ashta-bench v0.1.0 (/home/ashta-dev/Ashta-Nano/crates/ashta-bench)
+warning: unused import: `make_events`
+ --> crates/ashta-bench/benches/query.rs:3:14
+  |
+3 | use common::{make_events, temp_dir};
+  |              ^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `make_events` is never used
+ --> crates/ashta-bench/benches/common.rs:4:8
+  |
+4 | pub fn make_events(n: usize, symbol: &str) -> Vec<Event> {
+  |        ^^^^^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `ashta-bench` (bench "query") generated 2 warnings (run `cargo fix --bench "query" -p ashta-bench` to apply 1 suggestion)
+    Finished `bench` profile [optimized] target(s) in 40.74s
+     Running benches/common.rs (target/release/deps/common-51863a9a07e451c0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running benches/query.rs (target/release/deps/query-e935816b6ace0d93)
+Gnuplot not found, using plotters backend
+Benchmarking query_read_range/segments/1
+Benchmarking query_read_range/segments/1: Warming up for 3.0000 s
+Benchmarking query_read_range/segments/1: Collecting 100 samples in estimated 5.0431 s (268k iterations)
+Benchmarking query_read_range/segments/1: Analyzing
+query_read_range/segments/1
+                        time:   [18.786 µs 19.042 µs 19.307 µs]
+Found 3 outliers among 100 measurements (3.00%)
+  3 (3.00%) high mild
+Benchmarking query_read_range/segments/4
+Benchmarking query_read_range/segments/4: Warming up for 3.0000 s
+Benchmarking query_read_range/segments/4: Collecting 100 samples in estimated 5.1407 s (66k iterations)
+Benchmarking query_read_range/segments/4: Analyzing
+query_read_range/segments/4
+                        time:   [69.058 µs 70.905 µs 72.593 µs]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+
+Benchmarking query_pruning_1_of_4_segments
+Benchmarking query_pruning_1_of_4_segments: Warming up for 3.0000 s
+Benchmarking query_pruning_1_of_4_segments: Collecting 100 samples in estimated 5.0216 s (288k iterations)
+Benchmarking query_pruning_1_of_4_segments: Analyzing
+query_pruning_1_of_4_segments
+                        time:   [18.293 µs 18.561 µs 18.794 µs]
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+
+     Running benches/read.rs (target/release/deps/read-bda9faf3c2858bb0)
+Gnuplot not found, using plotters backend
+Benchmarking read_sequential/1000
+Benchmarking read_sequential/1000: Warming up for 3.0000 s
+Benchmarking read_sequential/1000: Collecting 100 samples in estimated 5.0101 s (359k iterations)
+Benchmarking read_sequential/1000: Analyzing
+read_sequential/1000    time:   [15.151 µs 15.537 µs 15.890 µs]
+                        thrpt:  [62.934 Melem/s 64.361 Melem/s 66.002 Melem/s]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking read_sequential/10000
+Benchmarking read_sequential/10000: Warming up for 3.0000 s
+Benchmarking read_sequential/10000: Collecting 100 samples in estimated 5.0639 s (91k iterations)
+Benchmarking read_sequential/10000: Analyzing
+read_sequential/10000   time:   [55.032 µs 55.445 µs 55.862 µs]
+                        thrpt:  [179.01 Melem/s 180.36 Melem/s 181.71 Melem/s]
+Found 4 outliers among 100 measurements (4.00%)
+  1 (1.00%) low mild
+  3 (3.00%) high mild
+Benchmarking read_sequential/100000
+Benchmarking read_sequential/100000: Warming up for 3.0000 s
+Benchmarking read_sequential/100000: Collecting 100 samples in estimated 7.0233 s (15k iterations)
+Benchmarking read_sequential/100000: Analyzing
+read_sequential/100000  time:   [457.00 µs 460.77 µs 464.83 µs]
+                        thrpt:  [215.13 Melem/s 217.03 Melem/s 218.82 Melem/s]
+Found 3 outliers among 100 measurements (3.00%)
+  3 (3.00%) high mild
+
+Benchmarking mmap_open_10k
+Benchmarking mmap_open_10k: Warming up for 3.0000 s
+Benchmarking mmap_open_10k: Collecting 100 samples in estimated 5.0121 s (611k iterations)
+Benchmarking mmap_open_10k: Analyzing
+mmap_open_10k           time:   [8.9114 µs 9.0368 µs 9.1560 µs]
+Found 2 outliers among 100 measurements (2.00%)
+  2 (2.00%) high severe
+
+     Running benches/write.rs (target/release/deps/write-404c64b57027ea76)
+Gnuplot not found, using plotters backend
+Benchmarking write_throughput/1000
+Benchmarking write_throughput/1000: Warming up for 3.0000 s
+Benchmarking write_throughput/1000: Collecting 100 samples in estimated 5.3757 s (800 iterations)
+Benchmarking write_throughput/1000: Analyzing
+write_throughput/1000   time:   [6.6639 ms 6.7447 ms 6.8274 ms]
+                        thrpt:  [146.47 Kelem/s 148.26 Kelem/s 150.06 Kelem/s]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) high mild
+Benchmarking write_throughput/10000
+Benchmarking write_throughput/10000: Warming up for 3.0000 s
+Benchmarking write_throughput/10000: Collecting 100 samples in estimated 5.3488 s (700 iterations)
+Benchmarking write_throughput/10000: Analyzing
+write_throughput/10000  time:   [7.4755 ms 7.5945 ms 7.7241 ms]
+                        thrpt:  [1.2946 Melem/s 1.3167 Melem/s 1.3377 Melem/s]
+Found 2 outliers among 100 measurements (2.00%)
+  1 (1.00%) high mild
+  1 (1.00%) high severe
+Benchmarking write_throughput/100000
+Benchmarking write_throughput/100000: Warming up for 3.0000 s
+Benchmarking write_throughput/100000: Collecting 100 samples in estimated 6.4102 s (400 iterations)
+Benchmarking write_throughput/100000: Analyzing
+write_throughput/100000 time:   [16.984 ms 17.205 ms 17.422 ms]
+                        thrpt:  [5.7397 Melem/s 5.8123 Melem/s 5.8880 Melem/s]
+Found 1 outliers among 100 measurements (1.00%)
+  1 (1.00%) low mild
+
+Benchmarking append_single_event
+Benchmarking append_single_event: Warming up for 3.0000 s
+Benchmarking append_single_event: Collecting 100 samples in estimated 5.0004 s (55M iterations)
+Benchmarking append_single_event: Analyzing
+append_single_event     time:   [82.274 ns 94.802 ns 107.41 ns]
+Found 4 outliers among 100 measurements (4.00%)
+  2 (2.00%) high mild
+  2 (2.00%) high severe
+
