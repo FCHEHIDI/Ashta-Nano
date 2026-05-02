@@ -3,6 +3,7 @@ use std::io::{self, BufWriter, Write};
 use std::path::{Path, PathBuf};
 
 use ashta_core::event::Event;
+use ashta_mem::MmapSegment;
 
 /// Taille maximale d'un segment avant rotation : 64 MiB.
 /// Soit 64 * 1024 * 1024 / 40 = 1_677_721 events par segment.
@@ -121,27 +122,33 @@ pub struct SealedSegment {
     pub event_count: u64,
 }
 
-/// Lit des `Event` depuis un segment existant sur disque.
+/// Lit des `Event` depuis un segment existant sur disque via `mmap`.
 ///
 /// Lecture séquentielle par itération. Le segment doit avoir été produit
 /// par `SegmentWriter` — aucune validation de format (layout fixe attendu).
+///
+/// Le fichier est mappé en mémoire via [`MmapSegment`] (zéro copie, zéro
+/// allocation heap). L'accès aux pages est délégué au kernel — seules les
+/// pages effectivement lues sont chargées en RAM (demand paging).
 pub struct SegmentReader {
-    data: Vec<u8>,
+    mmap: MmapSegment,
     cursor: usize,
 }
 
 impl SegmentReader {
-    /// Charge le segment en mémoire depuis `path`.
+    /// Mappe le segment `path` en mémoire et prépare l'itération.
     ///
-    /// Pour un MVP on charge tout en RAM. On passera à `mmap` dans `ashta-mem`.
+    /// # Errors
+    ///
+    /// Retourne une erreur si le fichier n'existe pas ou si `mmap` échoue.
     pub fn open(path: impl AsRef<Path>) -> io::Result<Self> {
-        let data = std::fs::read(path)?;
-        Ok(Self { data, cursor: 0 })
+        let mmap = MmapSegment::open(path)?;
+        Ok(Self { mmap, cursor: 0 })
     }
 
     /// Nombre total d'events dans ce segment.
     pub fn event_count(&self) -> usize {
-        self.data.len() / std::mem::size_of::<Event>()
+        self.mmap.len() / std::mem::size_of::<Event>()
     }
 }
 
@@ -155,11 +162,12 @@ impl Iterator for SegmentReader {
     /// Safe car le fichier a été écrit par `SegmentWriter` avec le même layout.
     fn next(&mut self) -> Option<Self::Item> {
         let size = std::mem::size_of::<Event>();
-        if self.cursor + size > self.data.len() {
+        let data = self.mmap.as_bytes();
+        if self.cursor + size > data.len() {
             return None;
         }
 
-        let bytes = &self.data[self.cursor..self.cursor + size];
+        let bytes = &data[self.cursor..self.cursor + size];
         self.cursor += size;
 
         // SAFETY: les bytes viennent d'un SegmentWriter — layout Event garanti.

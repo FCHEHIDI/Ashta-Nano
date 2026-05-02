@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 ashta-core  = { path = "../ashta-core" }
 ashta-index = { path = "../ashta-index" }
+ashta-mem   = { path = "../ashta-mem" }
