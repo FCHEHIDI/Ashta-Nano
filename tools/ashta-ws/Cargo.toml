@@ -1,0 +1,15 @@
+[package]
+name = "ashta-ws"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "ashta-ws"
+path = "src/main.rs"
+
+[dependencies]
+ashta-core  = { path = "../../crates/ashta-core" }
+ashta-log   = { path = "../../crates/ashta-log" }
+tungstenite = { version = "0.24", features = ["rustls-tls-webpki-roots"] }
+serde       = { version = "1", features = ["derive"] }
+serde_json  = "1"
