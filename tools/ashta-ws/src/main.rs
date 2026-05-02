@@ -39,6 +39,11 @@ struct TradeMsg {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // ── 0. Initialise le crypto provider rustls (obligatoire depuis 0.23) ──
+    rustls::crypto::ring::default_provider()
+        .install_default()
+        .expect("rustls crypto provider already installed");
+
     // ── 1. Ouvre (ou reprend) le log ──────────────────────────────────────
     let dir = PathBuf::from(LOG_DIR);
     std::fs::create_dir_all(&dir)?;
