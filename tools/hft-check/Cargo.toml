@@ -1,0 +1,11 @@
+[package]
+name = "hft-check"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "hft-check"
+path = "src/main.rs"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+ashta-kernel = { path = "../../crates/ashta-kernel" }
