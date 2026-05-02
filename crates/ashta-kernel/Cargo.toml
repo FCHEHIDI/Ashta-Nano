@@ -1,0 +1,8 @@
+[package]
+name = "ashta-kernel"
+version = "0.1.0"
+edition = "2024"
+
+# libc only needed on Linux for sched_setaffinity / sched_setscheduler
+[target.'cfg(target_os = "linux")'.dependencies]
+libc = "0.2"
