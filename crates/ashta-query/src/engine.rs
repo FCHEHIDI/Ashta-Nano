@@ -63,13 +63,15 @@ impl QueryEngine {
 
             let reader = SegmentReader::open(&seg_path)?;
 
-            // Étape 3 — filtre en mémoire : symbol + fenêtre temporelle
-            for event in reader {
+            // Étape 3 — filtre en mémoire : symbol + fenêtre temporelle.
+            // reader.events() retourne &[Event] directement depuis le mmap —
+            // zéro copie, zéro allocation intermédiaire.
+            for event in reader.events() {
                 if event.symbol == symbol
                     && event.timestamp_ns >= t_start
                     && event.timestamp_ns <= t_end
                 {
-                    results.push(event);
+                    results.push(*event);
                 }
             }
         }

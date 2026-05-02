@@ -54,6 +54,32 @@ impl MmapSegment {
         &self.mmap
     }
 
+    /// Interprète les bytes du segment comme un slice continu de `T`.
+    ///
+    /// Un seul cast pour la totalité du mapping — aucun cursor, aucune copie
+    /// intermédiaire. Les bytes en fin de segment qui ne forment pas un `T`
+    /// complet sont ignorés silencieusement.
+    ///
+    /// # Safety
+    ///
+    /// L'appelant garantit que les bytes ont été écrits avec le layout de `T` :
+    /// - même taille (`size_of::<T>()`)
+    /// - même alignement (garanti car `mmap` est aligné sur une page de 4096 bytes)
+    /// - pas de padding non-initialisé observable
+    ///
+    /// Dans Ashta-TS, `T = Event` (`repr(C)`, 40 bytes) et le segment a été
+    /// produit par `SegmentWriter` — ces invariants sont garantis.
+    #[inline]
+    pub unsafe fn as_slice<T: Copy>(&self) -> &[T] {
+        let elem_size = std::mem::size_of::<T>();
+        if elem_size == 0 {
+            return &[];
+        }
+        let len = self.mmap.len() / elem_size;
+        // SAFETY: voir doc — appelant garantit layout + alignement.
+        unsafe { std::slice::from_raw_parts(self.mmap.as_ptr() as *const T, len) }
+    }
+
     /// Taille du segment en bytes.
     #[inline]
     pub fn len(&self) -> usize {

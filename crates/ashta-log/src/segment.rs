@@ -150,6 +150,20 @@ impl SegmentReader {
     pub fn event_count(&self) -> usize {
         self.mmap.len() / std::mem::size_of::<Event>()
     }
+
+    /// Retourne une vue `&[Event]` directe sur le segment mappé — zéro copie.
+    ///
+    /// Contrairement à l'`Iterator`, aucun cursor n'est utilisé : le cast est
+    /// effectué une seule fois sur la totalité du mapping. L'accès est O(1),
+    /// sans allocation heap.
+    ///
+    /// Le slice est valide tant que ce `SegmentReader` est vivant.
+    #[inline]
+    pub fn events(&self) -> &[Event] {
+        // SAFETY: le segment a été écrit par SegmentWriter avec le layout Event
+        // (repr(C), 40 bytes, aligné 8). Le mmap est aligné sur 4096 bytes.
+        unsafe { self.mmap.as_slice::<Event>() }
+    }
 }
 
 impl Iterator for SegmentReader {
