@@ -1,0 +1,13 @@
+[package]
+name = "ashta-demo"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "ashta-demo"
+path = "src/main.rs"
+
+[dependencies]
+ashta-core  = { path = "../../crates/ashta-core" }
+ashta-log   = { path = "../../crates/ashta-log" }
+ashta-query = { path = "../../crates/ashta-query" }
